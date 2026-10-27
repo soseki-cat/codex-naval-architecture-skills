@@ -1,0 +1,49 @@
+schema_version: 1
+slug: rhino-basic-hull
+skill_dir: skills/rhino-basic-hull
+submission_status: staging_native_rhino_test_required
+name: Rhino Hull Stage Audit
+summary: Build or review a staged Rhino hull while preserving source curves, separating geometry from topology evidence, and recording every unresolved item.
+description_file: marketplace/listings/rhino-basic-hull-description.md
+demo_file: marketplace/listings/rhino-basic-hull-demo.md
+logo: marketplace/assets/rhino-basic-hull-logo.png
+screenshots: []
+categories:
+  - technical-documentation
+  - workflow-automation
+  - research-analysis
+tags:
+  - rhino
+  - ship-design
+  - hull-surface
+  - lines-plan
+  - geometry-audit
+  - naval-architecture
+use_cases:
+  - Convert an existing lines plan into a controlled Rhino curve skeleton.
+  - Review waterline and buttock fit, source coordinates, and stage boundaries.
+  - Separate coordinate, geometry-quality, topology, and save/readback evidence.
+  - Audit a staged 3DM model without modifying the source document.
+compatibility: Requires a Rhino installation with RhinoCommon and its Python runtime for native work or audit. Plain Python can only run hull_math.py source-coordinate checks.
+requires:
+  - Rhino with RhinoCommon for native geometry work and rhino_audit.py
+  - Rhino Python runtime compatible with the selected Rhino version
+  - Python 3 for the standard-library hull_math.py helper
+permissions:
+  terminal: Runs the supplied read-only audit or coordinate helper.
+  files_read: Reads a user-supplied DXF, 3DM, or coordinate request.
+  files_write: Writes new reports or working copies; source models must remain unchanged.
+  native_application: May require Rhino UI or scripting access for actual modeling and visual checks.
+  network: No network access is required.
+known_limitations:
+  - Does not install Rhino, control unavailable UI, or create native geometry when RhinoCommon is unavailable.
+  - Does not infer missing offsets, hidden boundaries, or unapproved estimates.
+  - Closure and zero naked edges do not establish fairing quality, structural adequacy, hydrostatics, CFD, or class approval.
+  - Historical case data is not evidence that the current buyer model was opened or verified.
+docs_url: https://github.com/soseki-cat/codex-naval-architecture-skills#lines-plan-to-rhino
+license: MIT
+pricing:
+  model: decision_required
+  suggested_launch_usd: 9
+  reason: The package is a technical review workflow, while native execution and visual acceptance depend on the buyer's Rhino environment.
+

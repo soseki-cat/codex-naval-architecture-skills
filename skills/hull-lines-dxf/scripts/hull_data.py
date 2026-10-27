@@ -7,8 +7,6 @@ corrections in config are descriptive. Source files and raw literals stay intact
 from __future__ import annotations
 
 import copy
-import csv
-from dataclasses import dataclass
 from decimal import Decimal, ROUND_HALF_UP
 import json
 from pathlib import Path
@@ -17,55 +15,10 @@ import re
 import numpy as np
 from scipy.interpolate import PchipInterpolator
 
+from hull_types import Bundle, positive as _positive, read_csv as _read_csv
+
 _NUMBER = re.compile(r"^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?$")
 _STATION = re.compile(r"^([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*\((AP|FP)\)$", re.I)
-
-
-@dataclass
-class Bundle:
-    params: dict
-    fields: list
-    rows_original: list
-    rows_effective: list
-    stations: np.ndarray
-    x: np.ndarray
-    z: np.ndarray
-    b: np.ndarray
-    physical: bool
-    x_note: str
-    split: float
-    origin_x: float
-    levels: list
-    profile_fields: list
-    profile_rows: list
-    profile_values: np.ndarray | None
-    profile_half_widths: list
-    deck_fields: list
-    deck_rows: list
-    deck_values: np.ndarray | None
-    transom: dict
-    correction_report: dict
-    inventory: list
-
-
-def _read_csv(path):
-    with Path(path).open(encoding="utf-8-sig", newline="") as stream:
-        reader = csv.DictReader(stream)
-        if not reader.fieldnames or reader.fieldnames[0] != "station":
-            raise ValueError(f"{path}: CSV first column must be station")
-        if len(set(reader.fieldnames)) != len(reader.fieldnames):
-            raise ValueError(f"{path}: duplicate CSV field names")
-        rows = list(reader)
-        if any(None in row or any(value is None for value in row.values()) for row in rows):
-            raise ValueError(f"{path}: CSV row widths must match the header")
-    return reader.fieldnames[1:], rows
-
-
-def _positive(value, name):
-    number = float(value)
-    if not np.isfinite(number) or number <= 0:
-        raise ValueError(f"{name} must be finite and positive")
-    return number
 
 
 def _station(raw, params):

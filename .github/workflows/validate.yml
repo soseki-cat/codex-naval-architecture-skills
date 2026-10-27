@@ -29,6 +29,9 @@ jobs:
       - name: Validate skill structure and links
         run: python scripts/validate_skills.py
 
+      - name: Validate Agensi release metadata and package limits
+        run: python scripts/build_agensi_release.py --check
+
       - name: Compile Python sources
         run: python -m compileall -q skills
 

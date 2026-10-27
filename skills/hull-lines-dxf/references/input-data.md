@@ -28,13 +28,18 @@ station,WL0,WL0.5,WL1
   "height_to_m": 0.001,
   "unit_evidence": "用户确认源表半宽和高度为毫米",
   "longitudinal_display_units_per_station": 1,
-  "languages": ["zh", "en"],
+  "languages": ["zh"],
   "embedded_tables": true,
   "annotations": true
 }
 ```
 
 `half_breadth_to_m` 必须明确；`height_to_m` 默认与它相同。`waterline_heights_m` 已是米，不能再按源单位换算。字体名称及配置从当前环境发现，不固定本机 Windows 字体路径。其他绘图可选参数按当前脚本配置使用。
+
+`languages` 必须明确设置，不能由生成器猜测。中文请求用 `["zh"]`，英文请求用
+`["en"]`；只有用户明确要求双语，或开源发布流程要求独立中英文资料时才使用
+`["zh", "en"]`。无法从请求和主输入资料判断语言时先询问用户。双语输出规则见
+[输出语言与双语交付](output-language.md)。
 
 纵向尺度优先使用 `station_x_m`，其次使用 `LBP_m`、`station_AP`、`station_FP` 的明确映射，再其次为已知 `station_spacing_m`。使用垂线映射时 `x=(s-s_AP)/(s_FP-s_AP)*LBP`；表首尾站不自动等于 AP/FP。未知实际尺度时默认采用原始站号坐标，`longitudinal_display_units_per_station` 默认 1，仅为显示倍数。混合站号 X 与米制 Y/Z 的图不能标为物理米制距离，也不能作为真实 3D 骨架。
 

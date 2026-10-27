@@ -18,7 +18,14 @@ class PipelineTests(unittest.TestCase):
         self.addCleanup(temp.cleanup)
         root=Path(temp.name)
         (root/"half.csv").write_text("station,WL0,WL1,WL2\n0,0,500,1000\n1,1000,1500,2000\n2,0,500,1000\n",encoding="utf-8")
-        config={"waterline_heights_m":[0,1,2],"half_breadth_to_m":.001,"LBP_m":20,"station_AP":0,"station_FP":2}
+        config={
+            "waterline_heights_m":[0,1,2],
+            "half_breadth_to_m":.001,
+            "LBP_m":20,
+            "station_AP":0,
+            "station_FP":2,
+            "languages":["zh","en"],
+        }
         config.update(params or {})
         (root/"params.json").write_text(json.dumps(config),encoding="utf-8")
         cmd=[sys.executable,str(SCRIPT),"--csv",str(root/"half.csv"),"--config",str(root/"params.json"),"--out",str(root/"out")]
@@ -31,7 +38,7 @@ class PipelineTests(unittest.TestCase):
         result=subprocess.run(cmd,capture_output=True,text=True,encoding="utf-8")
         return result,root/"out"
 
-    def test_default_delivers_two_languages_with_tables_and_curve_labels(self):
+    def test_explicit_two_languages_include_tables_and_curve_labels(self):
         result,out=self.build()
         self.assertEqual(result.returncode,0,result.stderr)
         for language in ["Chinese","English"]:
@@ -47,6 +54,24 @@ class PipelineTests(unittest.TestCase):
         report=json.loads((out/"validation.json").read_text())
         self.assertEqual(report["languages"],["zh","en"])
         self.assertTrue(report["language_geometry_identical"])
+
+    def test_language_must_be_explicit(self):
+        result,out=self.build(params={"languages":None})
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn("languages must be set explicitly",result.stderr)
+        self.assertFalse(list(out.glob("*.dxf")) if out.exists() else [])
+
+    def test_bilingual_files_keep_title_languages_independent(self):
+        result,out=self.build()
+        self.assertEqual(result.returncode,0,result.stderr)
+        zh=ezdxf.readfile(out/"hull_lines_Chinese.dxf")
+        en=ezdxf.readfile(out/"hull_lines_English.dxf")
+        zh_text={e.dxf.text for e in zh.modelspace().query("TEXT")}
+        en_text={e.dxf.text for e in en.modelspace().query("TEXT")}
+        self.assertIn("横剖面图",zh_text)
+        self.assertIn("WATERLINE PLAN",en_text)
+        self.assertNotIn("BODY PLAN",zh_text)
+        self.assertNotIn("水线面图",en_text)
 
     def test_direct_profile_and_deck_and_transom_are_used_without_invented_x(self):
         result,out=self.build(profile="station,CL,500BL\n0,0,500\n1,0,0\n2,0,600\n",

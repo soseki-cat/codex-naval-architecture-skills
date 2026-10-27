@@ -1,4 +1,4 @@
 interface:
   display_name: "Rhino 船体基础建模"
   short_description: "从二维型线与阶段模型建立可编辑的 Rhino 基础船体并完成阶段检查"
-  default_prompt: "使用 $rhino-basic-hull 检查当前资料，并完成我指定阶段的船体建模，保留原始几何和估计来源。"
+  default_prompt: "使用 $rhino-basic-hull 先检查源曲线的突变和异常，发现问题时列明对象和证据并等待我确认，确认拟合后再完成我指定阶段的船体建模，并按我的请求语言输出。"

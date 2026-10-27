@@ -8,5 +8,6 @@
   "body_split_x": 50.0,
   "origin_station": 5,
   "buttock_half_breadths_m": [1, 2, 3, 4, 5, 6, 7],
-  "mirror_3d": false
+  "mirror_3d": false,
+  "languages": ["zh"]
 }

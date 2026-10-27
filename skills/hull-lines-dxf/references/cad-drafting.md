@@ -2,7 +2,9 @@
 
 ## 完整语言版本
 
-`languages` 默认 `["zh", "en"]`，各语言完整独立交付；默认 `embedded_tables=true`、`annotations=true`。双语输出根目录为 `hull_lines_Chinese.dxf` 与 `hull_lines_English.dxf` 合并图，`Chinese/`、`English/` 内各有独立横剖、水线、纵剖图。仅选一种语言（如 `languages=["en"]`）时，在输出根目录保留旧名 `body_plan.dxf`、`waterline_plan.dxf`、`longitudinal_sections.dxf`、`three_views_combined.dxf`。用户明确指定的语言和视图覆盖默认。
+`languages` 必须由调用者明确设置，不再默认双语。优先级为用户明确语言、当前请求语言、主输入资料语言；无法判断时询问。中文请求使用 `["zh"]`，英文请求使用 `["en"]`。只有用户明确要求双语，或任务性质要求开源仓库同时发布两种语言资料时，才使用 `["zh", "en"]`。
+
+单语输出在根目录保留 `body_plan.dxf`、`waterline_plan.dxf`、`longitudinal_sections.dxf`、`three_views_combined.dxf`。双语输出在根目录生成 `hull_lines_Chinese.dxf` 与 `hull_lines_English.dxf`，并在 `Chinese/`、`English/` 内分别生成独立横剖、水线、纵剖图。两套文件的文字、字体和排版各自完成，不在同一 DXF 中混排。
 
 同一数据生成两套几何，核对曲线、源点、颜色及表格内容一致；文字翻译不得改变数据。独立与合并图的排版平移必须可识别，不能混作船体坐标。新生成视图先分别标注再合并，以保持标签与引线的一致几何。
 

@@ -1,0 +1,54 @@
+schema_version: 1
+slug: hull-lines-dxf
+skill_dir: skills/hull-lines-dxf
+submission_status: ready_after_price_and_payout
+name: Hull Lines DXF Studio
+summary: Turn hull offsets into auditable bilingual DXF lines plans with source ledgers, explicit gaps, curve labels, and validation reports.
+description_file: marketplace/listings/hull-lines-dxf-description.md
+demo_file: marketplace/listings/hull-lines-dxf-demo.md
+logo: marketplace/assets/hull-lines-dxf-logo.png
+screenshots:
+  - marketplace/assets/hull-lines-dxf-example.png
+categories:
+  - technical-documentation
+  - workflow-automation
+  - research-analysis
+tags:
+  - naval-architecture
+  - hull-lines
+  - dxf
+  - cad
+  - ship-design
+  - offsets
+  - bilingual
+use_cases:
+  - Convert a symmetric offset table into body, waterline, and profile DXF views.
+  - Preserve ambiguous cells and document every estimate before drawing.
+  - Add repeatable curve labels to an existing hull-lines DXF without editing source geometry.
+  - Produce bilingual drawing editions with identical geometry and an auditable validation report.
+compatibility: Requires Python 3.10+ and write access to a new output directory. Native AutoCAD or Rhino validation remains a separate check.
+requires:
+  - Python 3.10 or newer
+  - ezdxf 1.4.4 or newer
+  - NumPy 2.2 or newer
+  - SciPy 1.15 or newer
+  - Matplotlib 3.10 or newer
+  - fontTools 4.55 or newer
+  - Pillow 11 or newer
+permissions:
+  terminal: Runs the supplied Python generator and environment checker.
+  files_read: Reads user-supplied CSV, JSON, and DXF input files.
+  files_write: Writes DXF files, previews, copied source data, and JSON reports to a new output directory.
+  network: No network access is used after Python dependencies are installed.
+known_limitations:
+  - Does not infer missing offsets, hidden hull boundaries, or unavailable station spacing.
+  - Does not build surfaces, closed solids, structural models, stability results, CFD, or class approvals.
+  - A DXF file audit and rendered preview do not replace native AutoCAD or Rhino review.
+  - Images and PDFs cannot be directly read by the Agensi delivery layer; source inputs must be supplied as text where possible.
+docs_url: https://github.com/soseki-cat/codex-naval-architecture-skills#quick-start
+license: MIT
+pricing:
+  model: decision_required
+  suggested_launch_usd: 19
+  reason: The package includes a deterministic pipeline, multiple references, examples, and regression tests; final price and free-versus-paid strategy remain the seller's decision.
+
