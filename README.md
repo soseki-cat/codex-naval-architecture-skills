@@ -1,6 +1,6 @@
 # Codex Naval Architecture Skills
 
-[![Validate](https://github.com/soseki-cat/codex-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/soseki-cat/codex-skills/actions/workflows/validate.yml)
+[![Validate](https://github.com/soseki-cat/codex-naval-architecture-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/soseki-cat/codex-naval-architecture-skills/actions/workflows/validate.yml)
 
 Two source-aware Codex skills for naval-architecture geometry work. They keep source data, units, uncertainty, and software-validation status visible throughout the workflow.
 
@@ -35,19 +35,19 @@ Copy the complete skill folder into the Codex skills directory. Keep each `agent
 ### PowerShell
 
 ```powershell
-git clone https://github.com/soseki-cat/codex-skills.git
+git clone https://github.com/soseki-cat/codex-naval-architecture-skills.git
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills" | Out-Null
-Copy-Item ".\codex-skills\skills\hull-lines-dxf" "$env:USERPROFILE\.codex\skills\" -Recurse
-Copy-Item ".\codex-skills\skills\rhino-basic-hull" "$env:USERPROFILE\.codex\skills\" -Recurse
+Copy-Item ".\codex-naval-architecture-skills\skills\hull-lines-dxf" "$env:USERPROFILE\.codex\skills\" -Recurse
+Copy-Item ".\codex-naval-architecture-skills\skills\rhino-basic-hull" "$env:USERPROFILE\.codex\skills\" -Recurse
 ```
 
 ### Bash
 
 ```bash
-git clone https://github.com/soseki-cat/codex-skills.git
+git clone https://github.com/soseki-cat/codex-naval-architecture-skills.git
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R codex-skills/skills/hull-lines-dxf "${CODEX_HOME:-$HOME/.codex}/skills/"
-cp -R codex-skills/skills/rhino-basic-hull "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R codex-naval-architecture-skills/skills/hull-lines-dxf "${CODEX_HOME:-$HOME/.codex}/skills/"
+cp -R codex-naval-architecture-skills/skills/rhino-basic-hull "${CODEX_HOME:-$HOME/.codex}/skills/"
 ```
 
 Then use the skill explicitly in Codex, for example:
