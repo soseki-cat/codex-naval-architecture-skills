@@ -1,0 +1,12 @@
+{
+  "waterline_heights_m": [0, 0.3, 1, 2, 3, 4, 5, 6],
+  "half_breadth_to_m": 0.001,
+  "unit_evidence": "示例截图最大半宽7692.3；按毫米换算全宽15.3846m，与主尺度B=15.38m一致",
+  "LBP_m": 100.0,
+  "station_AP": 0,
+  "station_FP": 10,
+  "body_split_x": 50.0,
+  "origin_station": 5,
+  "buttock_half_breadths_m": [1, 2, 3, 4, 5, 6, 7],
+  "mirror_3d": false
+}

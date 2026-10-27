@@ -1,0 +1,4 @@
+interface:
+  display_name: "船舶型线图生成"
+  short_description: "hull-lines-dxf：默认中英文完整三视图，含图内表格、逐线颜色和随线标注"
+  default_prompt: "使用 $hull-lines-dxf，根据我的截图或型值表核对数据、单位和站位，默认生成中英文独立及合并三视图 DXF，包含图内网格表、逐曲线颜色、随线站号与 WL/BP 引线；保留原始点、未知数据和估算记录，按我的明确选择调整成果。"

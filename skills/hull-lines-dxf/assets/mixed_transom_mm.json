@@ -1,0 +1,23 @@
+{
+  "station_label": "TRANSOM",
+  "longitudinal_position": null,
+  "waterline_half_breadths_mm": {
+    "10000WL": 1642,
+    "11000WL": 4770,
+    "12000WL": 7109,
+    "13000WL": 9161,
+    "14000WL": 11054,
+    "15000WL": 12629
+  },
+  "upper_deck_half_breadth_mm": 13302,
+  "poop_deck_half_breadth_mm": 14250,
+  "CL_raw": "19200/9572",
+  "buttock_height_mm": {
+    "1000BL": 9829,
+    "2000BL": 10099,
+    "3000BL": 10391,
+    "4000BL": 10719,
+    "5000BL": "1108…"
+  },
+  "note": "Transom X is unspecified. Readable station-row 5000BL cells are now included; right-edge incomplete cells preserve their visible prefix."
+}

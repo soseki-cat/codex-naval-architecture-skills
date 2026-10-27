@@ -1,0 +1,132 @@
+{
+  "example_only": true,
+  "case_id": "100m-basic-hull",
+  "coordinate_system": {
+    "X": "aft negative / bow positive",
+    "Y": "starboard positive",
+    "Z": "height / baseline 0"
+  },
+  "provided_reference_dimensions_m": {
+    "LBP": 100,
+    "LOA": 104.46,
+    "B_rounded": 15.38,
+    "B_offsets": 15.3846,
+    "D": 11.51
+  },
+  "stations_m": {
+    "0": -50,
+    "0.5": -45,
+    "1": -40,
+    "2": -30,
+    "3": -20,
+    "4": -10,
+    "5": 0,
+    "6": 10,
+    "7": 20,
+    "8": 30,
+    "9": 40,
+    "9.5": 45,
+    "10": 50
+  },
+  "BP_planes_m": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "BP_source_segment_counts": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    1,
+    1
+  ],
+  "waterline_heights_m": [
+    0,
+    0.3,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "source_body_frame": {
+    "origin": [
+      12,
+      25,
+      0
+    ],
+    "width_axis": [
+      1,
+      0,
+      0
+    ],
+    "height_axis": [
+      0,
+      1,
+      0
+    ],
+    "metres_per_unit": 1
+  },
+  "source_profile_frame": {
+    "origin": [
+      50,
+      50,
+      0
+    ],
+    "length_axis": [
+      1,
+      0,
+      0
+    ],
+    "height_axis": [
+      0,
+      1,
+      0
+    ],
+    "metres_per_unit": 1
+  },
+  "station5_actual_lower_endpoint_m": [
+    0,
+    5.930763,
+    0
+  ],
+  "BP_provenance": "derived from the same source offsets, not independent measured data",
+  "upper_assumptions": {
+    "status": "ESTIMATED",
+    "stern_overhang_m": 1.26,
+    "bow_overhang_m": 3.2,
+    "stern_sheer_rise_m": 0.35,
+    "bow_sheer_rise_m": 0.8,
+    "stern_deck_half_width_m": 4.2,
+    "bow_deck_half_width_m": 0.8,
+    "max_camber_m": 0.15
+  },
+  "retained_review": [
+    {
+      "finding": "aft centerline rounding",
+      "magnitude_m": 0.0291731
+    },
+    {
+      "finding": "BP7 Z6 plane-section endpoint discrepancy",
+      "magnitude_m": 0.3190765,
+      "not_equivalent_to": "about45mm closest-point surface residual"
+    }
+  ],
+  "historical_basic_result": {
+    "faces": 20,
+    "edges": 42,
+    "vertices": 24,
+    "closed": true,
+    "naked_edges": 0,
+    "non_manifold_edges": 0,
+    "orientation": "Outward",
+    "qualification": "basic editable hull with authorized estimates and retained G0/review; not exact replica"
+  }
+}
